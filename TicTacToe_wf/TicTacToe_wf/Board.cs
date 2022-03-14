@@ -14,7 +14,8 @@ namespace TicTacToe_wf
     {
         private int size;
         private bool turn;
-        private String[,] board;
+        private String[,] board_;
+        private FlowLayoutPanel board = new FlowLayoutPanel();
         public Board(int Size)
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace TicTacToe_wf
                     button.Click += gameButtton_Click;
                 }
             }*/
-            FlowLayoutPanel board = new FlowLayoutPanel();
+            
             board.Size = new Size(65 * size, 65 * size);
             board.FlowDirection = FlowDirection.LeftToRight;
             board.Left = (this.ClientSize.Width - board.Width)/2;
@@ -53,12 +54,12 @@ namespace TicTacToe_wf
         }
         private void checkWinner()
         {
-            board = new String[size,size];
+            board_ = new String[size,size];
             int i = 0; int j = 0;
             bool diagonal1 = true;bool diagonal2 = true;
-            foreach(Button button in this.Controls) 
+            foreach(Button button in board.Controls.OfType<Button>()) 
             {
-                board[i, j] = button.Text; i++;
+                board_[j, i] = button.Text; i++;
                 if (i == size)
                 {
                     i = 0; j++;
@@ -73,20 +74,20 @@ namespace TicTacToe_wf
             {
                 for (int col = 0;col<size-1;col++) //check first diagonal
                 {
-                    if (board[row, col] != board[row+1, col+1])
+                    if (board_[row, col] != board_[row+1, col+1])
                     {
                         diagonal1 = false;
                     }
                 }
                 for (int col = size-1; col > 0; col--) //check second diagonal
                 {
-                    if (board[row, col] != board[row + 1, col-1])
+                    if (board_[row, col] != board_[row + 1, col-1])
                     {
                         diagonal2 = false;
                     }
                 }
             }
-            MessageBox.Show($"{diagonal2}");
+            MessageBox.Show($"{diagonal1} {diagonal2}");
         }
         private void gameButtton_Click(object sender, EventArgs e)
         {
