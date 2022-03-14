@@ -20,17 +20,18 @@ namespace TicTacToe_wf
         {
             InitializeComponent();
             this.size = Size;
+            board_ = new String[size, size];
         }
         public void generateBoard()
         {
+
             //Setting up flowlayout panel
             board.Size = new Size(65 * size, 65 * size);
             board.FlowDirection = FlowDirection.LeftToRight;
-            board.Left = (this.ClientSize.Width - board.Width)/2;
-            board.Top = (this.ClientSize.Height - board.Height)/2;
+            board.Left = (this.ClientSize.Width - board.Width) / 2;
+            board.Top = (this.ClientSize.Height - board.Height) / 2;
             board.Anchor = AnchorStyles.None;
-            //Generating play buttons
-            for (int i = 0; i < size*size; i++)
+            for (int i = 0; i < size * size; i++)
             {
                 Button btn = new Button();
                 btn.Size = new Size(61, 61);
@@ -42,11 +43,14 @@ namespace TicTacToe_wf
         }
         private void checkWinner()
         {
-            board_ = new String[size,size];
             int i = 0; int j = 0;
-            bool diagonal1 = true;bool diagonal2 = true;
-            foreach(Button button in board.Controls.OfType<Button>()) 
+            bool diagonal1 = true; bool diagonal2 = true; bool rows = true; bool cols = true; bool remiza = true;
+
+            foreach (Button button in board.Controls.OfType<Button>())
             {
+                if (button.Text == "")
+                    remiza = false;
+
                 board_[j, i] = button.Text; i++;
                 if (i == size)
                 {
@@ -56,26 +60,52 @@ namespace TicTacToe_wf
                 {
                     j = 0;
                 }
-            } //changes buttton to string 2d array
+            } //changes butttons to string 2d array
 
-            for (int row = 0;row<size-1;row++)
+            for (int p = 0; p < size - 1; p++)
             {
-                for (int col = 0;col<size-1;col++) //check first diagonal
+                if (board_[p, p] != board_[p + 1, p + 1] || board_[p, p] == "")
                 {
-                    if (board_[row, col] != board_[row+1, col+1])
-                    {
-                        diagonal1 = false;
-                    }
+                    diagonal1 = false;
                 }
-                for (int col = size-1; col > 0; col--) //check second diagonal
+            } //diagonal 1
+
+            for (int p = size - 1; p > 0; p--)
+            {
+                if (board_[size - 1 - p, p] != board_[size - p, p - 1] || board_[size - 1 - p, p] == "")
                 {
-                    if (board_[row, col] != board_[row + 1, col-1])
-                    {
-                        diagonal2 = false;
-                    }
+                    diagonal2 = false;
                 }
+            } //diagonal 2
+
+            if (diagonal1 || diagonal2)
+            {
+                MessageBox.Show("VYHRAAA"); // TREBA DOROBIT
             }
-            MessageBox.Show($"{diagonal1} {diagonal2}");
+            for(int row = 0; row < size; row++)
+            {
+                for(int col = 0; col < size-1; col++)
+                {
+                    if (board_[row, col] != board_[row, col + 1] || board_[row,col] == "")
+                    {
+                        rows = false;
+                    } //rows
+                    if (board_[col, row] != board_[col +1, row] || board_[col, row] == "")
+                    {
+                        cols = false;
+                    } //cols
+                }
+                MessageBox.Show($"{rows} {cols}");
+                if (rows || cols)
+                {
+                    MessageBox.Show("VYHRAAA"); // TREBA DOROBIT
+                }
+            } //rows and cols
+            int[] pole = new int[size];
+            if(remiza && !diagonal1 && !diagonal2 && !rows && !cols)
+            {
+                MessageBox.Show("REMIZAA"); //TREBA DOROBIT
+            }
         }
         private void gameButtton_Click(object sender, EventArgs e)
         {
