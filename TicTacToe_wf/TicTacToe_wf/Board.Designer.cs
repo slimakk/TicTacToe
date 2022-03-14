@@ -40,6 +40,7 @@
             this.Name = "Board";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Board";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Board_FormClosed);
             this.ResumeLayout(false);
 
         }

@@ -66,10 +66,10 @@ namespace TicTacToe_wf
             board.ShowDialog();
 
         }
-        private void gameButtton_Click(object sender, EventArgs e)
+
+        private void Play_FormClosed(object sender, FormClosedEventArgs e) //shuts off program when "krizik" is pressed
         {
-
+            Application.Exit();
         }
-
     }
 }

@@ -24,5 +24,9 @@ namespace TicTacToe_wf
 
         }
 
+        private void TicTacToe_FormClosed(object sender, FormClosedEventArgs e) //shuts off program when "krizik" is pressed
+        {
+            Application.Exit();
+        }
     }
 }
