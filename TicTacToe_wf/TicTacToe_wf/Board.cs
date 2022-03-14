@@ -22,7 +22,7 @@ namespace TicTacToe_wf
         }
         public void generateBoard()
         {
-            for (int i = 0; i < size; i++)
+            /*for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
@@ -34,7 +34,22 @@ namespace TicTacToe_wf
                     this.Controls.Add(button);
                     button.Click += gameButtton_Click;
                 }
-            }  
+            }*/
+            FlowLayoutPanel board = new FlowLayoutPanel();
+            board.Size = new Size(65 * size, 65 * size);
+            board.FlowDirection = FlowDirection.LeftToRight;
+            board.Left = (this.ClientSize.Width - board.Width)/2;
+            board.Top = (this.ClientSize.Height - board.Height)/2;
+            board.Anchor = AnchorStyles.None;
+            for (int i = 0; i < size*size; i++)
+            {
+                Button btn = new Button();
+                btn.Size = new Size(61, 61);
+                btn.Margin = new Padding(2, 2, 2, 2);
+                btn.Click += gameButtton_Click;
+                board.Controls.Add(btn);
+            }
+            this.Controls.Add(board);
         }
         private void checkWinner()
         {
