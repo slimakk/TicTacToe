@@ -13,14 +13,16 @@ namespace TicTacToe_wf
     public partial class Board : Form
     {
         private int size;
-        private bool turn;
+        private bool turn ;
         private String[,] board_;
         private FlowLayoutPanel board = new FlowLayoutPanel();
         public Board(int Size)
         {
             InitializeComponent();
             this.size = Size;
-            board_ = new String[size, size];
+            this.board_ = new String[size, size];
+            var random = new Random();
+            this.turn = random.Next(2) == 1;
         }
         public void generateBoard()
         {
@@ -107,17 +109,18 @@ namespace TicTacToe_wf
                         cols = false;
                     } //cols
                 }
-                MessageBox.Show($"{rows} {cols}");
                 if (rows || cols)
                 {
                     MessageBox.Show("VYHRAAA"); // TREBA DOROBIT
                 }
+                if (remiza && !diagonal1 && !diagonal2 && !rows && !cols)
+                {
+                    MessageBox.Show("REMIZAA"); //TREBA DOROBIT
+                    break;
+                }
+                rows = true;cols = true;
             } //rows and cols
-            int[] pole = new int[size];
-            if(remiza && !diagonal1 && !diagonal2 && !rows && !cols)
-            {
-                MessageBox.Show("REMIZAA"); //TREBA DOROBIT
-            }
+
         }
         private void gameButtton_Click(object sender, EventArgs e)
         {

@@ -28,7 +28,10 @@ namespace TicTacToe_wf
 
         private void normalGameButton_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            Board board = new Board(3);
+            board.generateBoard();
+            board.ShowDialog();
         }
 
         private void customGameButton_Click(object sender, EventArgs e)
