@@ -35,10 +35,10 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(200, 86);
+            this.startButton.Location = new System.Drawing.Point(225, 80);
             this.startButton.Margin = new System.Windows.Forms.Padding(0);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(240, 43);
+            this.startButton.Size = new System.Drawing.Size(250, 50);
             this.startButton.TabIndex = 0;
             this.startButton.Text = "Play";
             this.startButton.UseVisualStyleBackColor = true;
@@ -46,10 +46,10 @@
             // 
             // leaderboardButton
             // 
-            this.leaderboardButton.Location = new System.Drawing.Point(200, 140);
+            this.leaderboardButton.Location = new System.Drawing.Point(225, 140);
             this.leaderboardButton.Margin = new System.Windows.Forms.Padding(0);
             this.leaderboardButton.Name = "leaderboardButton";
-            this.leaderboardButton.Size = new System.Drawing.Size(240, 43);
+            this.leaderboardButton.Size = new System.Drawing.Size(250, 50);
             this.leaderboardButton.TabIndex = 1;
             this.leaderboardButton.Text = "Leaderboard";
             this.leaderboardButton.UseVisualStyleBackColor = true;
@@ -57,10 +57,10 @@
             // 
             // endButton
             // 
-            this.endButton.Location = new System.Drawing.Point(200, 196);
+            this.endButton.Location = new System.Drawing.Point(225, 200);
             this.endButton.Margin = new System.Windows.Forms.Padding(0);
             this.endButton.Name = "endButton";
-            this.endButton.Size = new System.Drawing.Size(240, 43);
+            this.endButton.Size = new System.Drawing.Size(250, 50);
             this.endButton.TabIndex = 2;
             this.endButton.Text = "End Game";
             this.endButton.UseVisualStyleBackColor = true;
