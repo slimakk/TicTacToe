@@ -35,9 +35,10 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(203, 299);
+            this.backButton.Location = new System.Drawing.Point(178, 224);
+            this.backButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(323, 161);
+            this.backButton.Size = new System.Drawing.Size(283, 64);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // normalGameButton
             // 
-            this.normalGameButton.Location = new System.Drawing.Point(201, 116);
+            this.normalGameButton.Location = new System.Drawing.Point(176, 87);
+            this.normalGameButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.normalGameButton.Name = "normalGameButton";
-            this.normalGameButton.Size = new System.Drawing.Size(325, 70);
+            this.normalGameButton.Size = new System.Drawing.Size(284, 52);
             this.normalGameButton.TabIndex = 1;
             this.normalGameButton.Text = "3x3";
             this.normalGameButton.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // customGameButton
             // 
-            this.customGameButton.Location = new System.Drawing.Point(205, 209);
+            this.customGameButton.Location = new System.Drawing.Point(179, 157);
+            this.customGameButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.customGameButton.Name = "customGameButton";
-            this.customGameButton.Size = new System.Drawing.Size(323, 59);
+            this.customGameButton.Size = new System.Drawing.Size(283, 44);
             this.customGameButton.TabIndex = 2;
             this.customGameButton.Text = "Custom";
             this.customGameButton.UseVisualStyleBackColor = true;
@@ -65,12 +68,13 @@
             // 
             // Play
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ClientSize = new System.Drawing.Size(684, 361);
             this.Controls.Add(this.customGameButton);
             this.Controls.Add(this.normalGameButton);
             this.Controls.Add(this.backButton);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Play";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Play";

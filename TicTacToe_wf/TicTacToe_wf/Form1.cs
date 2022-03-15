@@ -21,7 +21,9 @@ namespace TicTacToe_wf
 
         private void leaderboardButton_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            var leader = new Leaderboard_form();
+            leader.ShowDialog();
         }
 
         private void TicTacToe_FormClosed(object sender, FormClosedEventArgs e) //shuts off program when "krizik" is pressed
