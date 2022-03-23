@@ -16,21 +16,21 @@ namespace TicTacToe_wf
         private string player_o;
         private string player_x;
         TextBox textBox = new TextBox();
-        public Play(string player_o, string player_x)
+        public Play(string player_o, string player_x) //constructor
         {
             this.player_o = player_o;
             this.player_x = player_x;
             InitializeComponent();
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e) //shows Players window
         {
             Hide();
-            Players menu = new Players();
-            menu.ShowDialog();
+            Players players = new Players();
+            players.ShowDialog();
         }
 
-        private void normalGameButton_Click(object sender, EventArgs e)
+        private void normalGameButton_Click(object sender, EventArgs e) //start game with 3x3 layout
         {
             Hide();
             Board board = new Board(SizeOfBoard, player_o, player_x);
@@ -38,13 +38,13 @@ namespace TicTacToe_wf
             board.ShowDialog();
         }
 
-        private void customGameButton_Click(object sender, EventArgs e)
+        private void customGameButton_Click(object sender, EventArgs e) //layout for custom game
         {
-
+            //hides buttons
             normalGameButton.Visible = false;
             customGameButton.Visible = false;
             backButton.Visible = false;
-
+            //generates new buttons NEEDS SOME WORK
             Label getNumber = new Label();
             Button button = new Button();   
             this.Controls.Add(getNumber);
@@ -61,7 +61,7 @@ namespace TicTacToe_wf
  
 
         }
-        private void okButton_Click(object sender, EventArgs e)
+        private void okButton_Click(object sender, EventArgs e)//generates board with given number
         {
             SizeOfBoard = Int32.Parse(textBox.Text);
             Hide();
@@ -71,7 +71,7 @@ namespace TicTacToe_wf
 
         }
 
-        private void Play_FormClosed(object sender, FormClosedEventArgs e) //shuts off program when "krizik" is pressed
+        private void Play_FormClosed(object sender, FormClosedEventArgs e) //shuts off program
         {
             Application.Exit();
         }

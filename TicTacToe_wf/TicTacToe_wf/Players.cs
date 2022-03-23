@@ -14,39 +14,37 @@ namespace TicTacToe_wf
     public partial class Players : Form
     {
 
-        public Players()
+        public Players() //constructor
         {
             InitializeComponent();
 
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e) //shows main menu window
         {
             Hide();
             TicTacToe menu = new TicTacToe();
             menu.ShowDialog();
         }
 
-        private void previousNamesButton_Click(object sender, EventArgs e)
+        private void previousNamesButton_Click(object sender, EventArgs e) //sets names from previous game
         {
             string[] players = File.ReadAllText("previous.txt").Split();
-            //MessageBox.Show($"player O: {players[0]} player X: {players[1]}") ;
             Hide();
             Play play = new Play(players[0], players[1]);
             play.ShowDialog();
 
         }
 
-        private void playButton_Click(object sender, EventArgs e)
+        private void playButton_Click(object sender, EventArgs e) //sets names that are typed in text boxes
         {
-            //File.WriteAllText("previous.txt",$"{playerO.Text} {playerX.Text}");
             Hide();
             Play play = new Play(playerO.Text, playerX.Text);
             play.ShowDialog();
 
         }
 
-        private void Players_FormClosed(object sender, FormClosedEventArgs e)
+        private void Players_FormClosed(object sender, FormClosedEventArgs e) //shuts off program
         {
             Application.Exit();
         }

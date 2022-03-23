@@ -21,16 +21,16 @@ namespace TicTacToe_wf
         private int numberOfTurns = 0;
         private string currentPlayer;
         private bool tie = false;
-        public Board(int Size,string player_o, string player_x)
+        public Board(int Size,string player_o, string player_x) //constructor
         {
             InitializeComponent();
             this.player_o = player_o;
             this.player_x = player_x;
             this.size = Size;
-            this.board_ = new String[size, size];
+            this.board_ = new String[size, size]; 
             var random = new Random();
-            this.turn = random.Next(2) == 1;
-            if (turn)
+            this.turn = random.Next(2) == 1; //chooses random player
+            if (turn) //selects current player name
                 this.currentPlayer = player_x;
             else
                 this.currentPlayer = player_o;
@@ -90,13 +90,12 @@ namespace TicTacToe_wf
                 }
             } //diagonal 2
 
-            if (diagonal1 || diagonal2)
+            if (diagonal1 || diagonal2) //checks winner in diagonals
             {
-                //MessageBox.Show($"VYHRAAA a {numberOfTurns}");
                 disableButtons();
                 return true;
             }
-            for(int row = 0; row < size; row++)
+            for(int row = 0; row < size; row++) //rows and cols
             {
                 for(int col = 0; col < size-1; col++)
                 {
@@ -109,24 +108,22 @@ namespace TicTacToe_wf
                         cols = false;
                     } //cols
                 }
-                if (rows || cols)
+                if (rows || cols) //checks for win in rows and columns
                 {
                     disableButtons();
-                    //MessageBox.Show($"VYHRAAA a {numberOfTurns} a {currentPlayer}"); // TREBA DOROBIT
                     return true;
                 }
-                if (empty && !diagonal1 && !diagonal2 && !rows && !cols)
+                if (empty && !diagonal1 && !diagonal2 && !rows && !cols) //checks if there is a tie
                 {
-                    //MessageBox.Show("REMIZAA"); //TREBA DOROBIT
                     tie = true;
                     return true;
                 }
                 rows = true;cols = true;
-            } //rows and cols
+            } 
             return false;
 
         }
-        private void disableButtons()
+        private void disableButtons() //disables all buttons in board
         {
             foreach(Button button in board.Controls.OfType<Button>())
             {
@@ -137,7 +134,7 @@ namespace TicTacToe_wf
         {
             numberOfTurns += 1;
             Button button = (Button)sender;
-            if (turn)
+            if (turn) //adds characters to clicked buttons
             {
                 this.currentPlayer = player_x;
                 button.Text = "X";
@@ -149,16 +146,15 @@ namespace TicTacToe_wf
             }
 
             button.Enabled = false;
-            turn = !turn;
+            turn = !turn; //changes turns
             if (checkWinner())
             {
-                File.WriteAllText("previous.txt", $"{player_o} {player_x}");
+                File.WriteAllText("previous.txt", $"{player_o} {player_x}"); //writes names in previous.txt
                 if (tie)
                 {
                     GameOver gameOver = new GameOver(currentPlayer, numberOfTurns, "Remiza", player_o, player_x, size);
                     gameOver.ShowDialog();
                 }
-
                 else
                 {
                     GameOver gameOver = new GameOver(currentPlayer, numberOfTurns, "Vyhra", player_o, player_x, size);
@@ -169,7 +165,7 @@ namespace TicTacToe_wf
             
         }
 
-        private void Board_FormClosed(object sender, FormClosedEventArgs e) //shuts off program when "krizik" is pressed
+        private void Board_FormClosed(object sender, FormClosedEventArgs e) //shuts off program
         {
             Application.Exit();
         }
