@@ -34,9 +34,10 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(513, 303);
+            this.backButton.Location = new System.Drawing.Point(586, 404);
+            this.backButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(163, 50);
+            this.backButton.Size = new System.Drawing.Size(186, 67);
             this.backButton.TabIndex = 1;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
@@ -44,24 +45,27 @@
             // 
             // leaderboard
             // 
-            this.leaderboard.Location = new System.Drawing.Point(8, 8);
+            this.leaderboard.Location = new System.Drawing.Point(9, 11);
+            this.leaderboard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.leaderboard.Name = "leaderboard";
-            this.leaderboard.Size = new System.Drawing.Size(668, 289);
+            this.leaderboard.Size = new System.Drawing.Size(763, 384);
             this.leaderboard.TabIndex = 2;
             this.leaderboard.UseCompatibleStateImageBehavior = false;
             // 
             // Leaderboard_form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ClientSize = new System.Drawing.Size(782, 481);
             this.Controls.Add(this.leaderboard);
             this.Controls.Add(this.backButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Leaderboard_form";
-            this.Padding = new System.Windows.Forms.Padding(5);
+            this.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Leaderboard";
+            this.Text = "TicTacToe - OOP : Leaderboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Leaderboard_form_FormClosed);
             this.Load += new System.EventHandler(this.Leaderboard_form_Load);
             this.ResumeLayout(false);
 

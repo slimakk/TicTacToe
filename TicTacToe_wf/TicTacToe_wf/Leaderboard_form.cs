@@ -38,7 +38,7 @@ namespace TicTacToe_wf
             TicTacToe menu = new TicTacToe();
             menu.ShowDialog();
         }
-        private void Leaderboard_form_Closed(object sender, FormClosedEventArgs e) //should close but doesnt work
+        private void Leaderboard_form_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

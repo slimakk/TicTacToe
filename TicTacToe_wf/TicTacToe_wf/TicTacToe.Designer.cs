@@ -35,10 +35,10 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(225, 80);
+            this.startButton.Location = new System.Drawing.Point(257, 107);
             this.startButton.Margin = new System.Windows.Forms.Padding(0);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(250, 50);
+            this.startButton.Size = new System.Drawing.Size(286, 67);
             this.startButton.TabIndex = 0;
             this.startButton.Text = "Play";
             this.startButton.UseVisualStyleBackColor = true;
@@ -46,10 +46,10 @@
             // 
             // leaderboardButton
             // 
-            this.leaderboardButton.Location = new System.Drawing.Point(225, 140);
+            this.leaderboardButton.Location = new System.Drawing.Point(257, 187);
             this.leaderboardButton.Margin = new System.Windows.Forms.Padding(0);
             this.leaderboardButton.Name = "leaderboardButton";
-            this.leaderboardButton.Size = new System.Drawing.Size(250, 50);
+            this.leaderboardButton.Size = new System.Drawing.Size(286, 67);
             this.leaderboardButton.TabIndex = 1;
             this.leaderboardButton.Text = "Leaderboard";
             this.leaderboardButton.UseVisualStyleBackColor = true;
@@ -57,10 +57,10 @@
             // 
             // endButton
             // 
-            this.endButton.Location = new System.Drawing.Point(225, 200);
+            this.endButton.Location = new System.Drawing.Point(257, 267);
             this.endButton.Margin = new System.Windows.Forms.Padding(0);
             this.endButton.Name = "endButton";
-            this.endButton.Size = new System.Drawing.Size(250, 50);
+            this.endButton.Size = new System.Drawing.Size(286, 67);
             this.endButton.TabIndex = 2;
             this.endButton.Text = "End Game";
             this.endButton.UseVisualStyleBackColor = true;
@@ -68,18 +68,17 @@
             // 
             // TicTacToe
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ClientSize = new System.Drawing.Size(782, 481);
             this.Controls.Add(this.endButton);
             this.Controls.Add(this.leaderboardButton);
             this.Controls.Add(this.startButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "TicTacToe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TicTacToe - OOP";
+            this.Text = "TicTacToe - OOP: Menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TicTacToe_FormClosed);
             this.ResumeLayout(false);
 

@@ -13,23 +13,27 @@ namespace TicTacToe_wf
     public partial class Play : Form
     {
         private int SizeOfBoard = 3;
+        private string player_o;
+        private string player_x;
         TextBox textBox = new TextBox();
-        public Play()
+        public Play(string player_o, string player_x)
         {
+            this.player_o = player_o;
+            this.player_x = player_x;
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             Hide();
-            TicTacToe menu = new TicTacToe();
+            Players menu = new Players();
             menu.ShowDialog();
         }
 
         private void normalGameButton_Click(object sender, EventArgs e)
         {
             Hide();
-            Board board = new Board(3);
+            Board board = new Board(SizeOfBoard, player_o, player_x);
             board.generateBoard();
             board.ShowDialog();
         }
@@ -54,17 +58,14 @@ namespace TicTacToe_wf
             textBox.Size = new Size(100,20);
             button.Location = new Point(350, 100);
             button.Click += okButton_Click;
-            
+ 
 
-            
-
-            
         }
         private void okButton_Click(object sender, EventArgs e)
         {
             SizeOfBoard = Int32.Parse(textBox.Text);
             Hide();
-            Board board = new Board(SizeOfBoard);
+            Board board = new Board(SizeOfBoard,player_o,player_x);
             board.generateBoard();
             board.ShowDialog();
 

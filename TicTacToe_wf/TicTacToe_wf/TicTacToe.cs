@@ -10,16 +10,16 @@ namespace TicTacToe_wf
         private void startButton_Click(object sender, EventArgs e)
         {
             Hide();
-            Play play = new Play();
+            Players play = new Players();
             play.ShowDialog();
         }
 
-        private void endButton_Click(object sender, EventArgs e)
+        private void endButton_Click(object sender, EventArgs e) //shuts off app
         {
             Application.Exit();
         }
 
-        private void leaderboardButton_Click(object sender, EventArgs e)
+        private void leaderboardButton_Click(object sender, EventArgs e) //shows leaderboard
         {
             Hide();
             var leader = new Leaderboard_form();

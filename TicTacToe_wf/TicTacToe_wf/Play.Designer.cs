@@ -35,10 +35,10 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(225, 200);
+            this.backButton.Location = new System.Drawing.Point(257, 267);
             this.backButton.Margin = new System.Windows.Forms.Padding(0);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(250, 50);
+            this.backButton.Size = new System.Drawing.Size(286, 67);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
@@ -46,10 +46,10 @@
             // 
             // normalGameButton
             // 
-            this.normalGameButton.Location = new System.Drawing.Point(225, 80);
+            this.normalGameButton.Location = new System.Drawing.Point(257, 107);
             this.normalGameButton.Margin = new System.Windows.Forms.Padding(0);
             this.normalGameButton.Name = "normalGameButton";
-            this.normalGameButton.Size = new System.Drawing.Size(250, 50);
+            this.normalGameButton.Size = new System.Drawing.Size(286, 67);
             this.normalGameButton.TabIndex = 1;
             this.normalGameButton.Text = "3x3";
             this.normalGameButton.UseVisualStyleBackColor = true;
@@ -57,10 +57,10 @@
             // 
             // customGameButton
             // 
-            this.customGameButton.Location = new System.Drawing.Point(225, 140);
+            this.customGameButton.Location = new System.Drawing.Point(257, 187);
             this.customGameButton.Margin = new System.Windows.Forms.Padding(0);
             this.customGameButton.Name = "customGameButton";
-            this.customGameButton.Size = new System.Drawing.Size(250, 50);
+            this.customGameButton.Size = new System.Drawing.Size(286, 67);
             this.customGameButton.TabIndex = 2;
             this.customGameButton.Text = "Custom";
             this.customGameButton.UseVisualStyleBackColor = true;
@@ -68,16 +68,15 @@
             // 
             // Play
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ClientSize = new System.Drawing.Size(782, 481);
             this.Controls.Add(this.customGameButton);
             this.Controls.Add(this.normalGameButton);
             this.Controls.Add(this.backButton);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Play";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Play";
+            this.Text = "TicTacToe - OOP: Size";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Play_FormClosed);
             this.ResumeLayout(false);
 
@@ -88,6 +87,6 @@
         private Button backButton;
         private Button normalGameButton;
         private Button customGameButton;
-        private TextBox textBox1;
+
     }
 }

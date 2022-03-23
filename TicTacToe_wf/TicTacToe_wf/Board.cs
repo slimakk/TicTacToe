@@ -12,17 +12,28 @@ namespace TicTacToe_wf
 {
     public partial class Board : Form
     {
+        private string player_o;
+        private string player_x;
         private int size;
         private bool turn ;
         private String[,] board_;
         private FlowLayoutPanel board = new FlowLayoutPanel();
-        public Board(int Size)
+        private int numberOfTurns = 0;
+        private string currentPlayer;
+        private bool tie = false;
+        public Board(int Size,string player_o, string player_x)
         {
             InitializeComponent();
+            this.player_o = player_o;
+            this.player_x = player_x;
             this.size = Size;
             this.board_ = new String[size, size];
             var random = new Random();
             this.turn = random.Next(2) == 1;
+            if (turn)
+                this.currentPlayer = player_x;
+            else
+                this.currentPlayer = player_o;
         }
         public void generateBoard()
         {
@@ -43,15 +54,14 @@ namespace TicTacToe_wf
             }
             this.Controls.Add(board);
         }
-        private void checkWinner()
+        private bool checkWinner()
         {
             int i = 0; int j = 0;
-            bool diagonal1 = true; bool diagonal2 = true; bool rows = true; bool cols = true; bool remiza = true;
-
+            bool diagonal1 = true; bool diagonal2 = true; bool rows = true; bool cols = true; bool empty = true;
             foreach (Button button in board.Controls.OfType<Button>())
             {
                 if (button.Text == "")
-                    remiza = false;
+                    empty = false;
 
                 board_[j, i] = button.Text; i++;
                 if (i == size)
@@ -82,7 +92,9 @@ namespace TicTacToe_wf
 
             if (diagonal1 || diagonal2)
             {
-                MessageBox.Show("VYHRAAA"); // TREBA DOROBIT
+                //MessageBox.Show($"VYHRAAA a {numberOfTurns}");
+                disableButtons();
+                return true;
             }
             for(int row = 0; row < size; row++)
             {
@@ -99,28 +111,62 @@ namespace TicTacToe_wf
                 }
                 if (rows || cols)
                 {
-                    MessageBox.Show("VYHRAAA"); // TREBA DOROBIT
+                    disableButtons();
+                    //MessageBox.Show($"VYHRAAA a {numberOfTurns} a {currentPlayer}"); // TREBA DOROBIT
+                    return true;
                 }
-                if (remiza && !diagonal1 && !diagonal2 && !rows && !cols)
+                if (empty && !diagonal1 && !diagonal2 && !rows && !cols)
                 {
-                    MessageBox.Show("REMIZAA"); //TREBA DOROBIT
-                    break;
+                    //MessageBox.Show("REMIZAA"); //TREBA DOROBIT
+                    tie = true;
+                    return true;
                 }
                 rows = true;cols = true;
             } //rows and cols
+            return false;
 
+        }
+        private void disableButtons()
+        {
+            foreach(Button button in board.Controls.OfType<Button>())
+            {
+                button.Enabled = false;
+            }
         }
         private void gameButtton_Click(object sender, EventArgs e)
         {
+            numberOfTurns += 1;
             Button button = (Button)sender;
             if (turn)
+            {
+                this.currentPlayer = player_x;
                 button.Text = "X";
+            }
             else
+            {
+                this.currentPlayer = player_o;
                 button.Text = "O";
+            }
 
             button.Enabled = false;
             turn = !turn;
-            checkWinner();
+            if (checkWinner())
+            {
+                File.WriteAllText("previous.txt", $"{player_o} {player_x}");
+                if (tie)
+                {
+                    GameOver gameOver = new GameOver(currentPlayer, numberOfTurns, "Remiza", player_o, player_x, size);
+                    gameOver.ShowDialog();
+                }
+
+                else
+                {
+                    GameOver gameOver = new GameOver(currentPlayer, numberOfTurns, "Vyhra", player_o, player_x, size);
+                    gameOver.ShowDialog();
+                }
+            }
+
+            
         }
 
         private void Board_FormClosed(object sender, FormClosedEventArgs e) //shuts off program when "krizik" is pressed
