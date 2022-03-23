@@ -13,7 +13,7 @@ namespace TicTacToe_wf
 {
     public partial class Players : Form
     {
-
+        private Database dat = new Database();
         public Players() //constructor
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace TicTacToe_wf
 
         private void previousNamesButton_Click(object sender, EventArgs e) //sets names from previous game
         {
-            string[] players = File.ReadAllText("previous.txt").Split();
+            string[] players = dat.LoadPrevious();
             Hide();
             Play play = new Play(players[0], players[1]);
             play.ShowDialog();

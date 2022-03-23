@@ -21,6 +21,7 @@ namespace TicTacToe_wf
         private int numberOfTurns = 0;
         private string currentPlayer;
         private bool tie = false;
+        private Database dat = new Database();
         public Board(int Size,string player_o, string player_x) //constructor
         {
             InitializeComponent();
@@ -149,7 +150,8 @@ namespace TicTacToe_wf
             turn = !turn; //changes turns
             if (checkWinner())
             {
-                File.WriteAllText("previous.txt", $"{player_o} {player_x}"); //writes names in previous.txt
+                //File.WriteAllText("previous.txt", $"{player_o} {player_x}"); //writes names in previous.txt
+                dat.WritePrevious(player_o, player_x);
                 if (tie)
                 {
                     GameOver gameOver = new GameOver(currentPlayer, numberOfTurns, "Remiza", player_o, player_x, size);
@@ -157,6 +159,7 @@ namespace TicTacToe_wf
                 }
                 else
                 {
+                    dat.AddToLeaderboard(currentPlayer);
                     GameOver gameOver = new GameOver(currentPlayer, numberOfTurns, "Vyhra", player_o, player_x, size);
                     gameOver.ShowDialog();
                 }
