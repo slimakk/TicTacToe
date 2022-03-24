@@ -113,5 +113,37 @@ namespace TicTacToe_wf
         {
             screens[2].BringToFront();
         }
+
+        private void boardLength_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMessage;
+            if(!ValidInput(boardLength.Text, out errorMessage))
+            {
+                e.Cancel = true;
+                boardLength.Select(0,boardLength.Text.Length);
+            }
+        }
+        public bool ValidInput(string value, out string errorMessage)
+        {
+            int number;
+            if(int.TryParse(value,out number))
+            {
+                if(number >= 3)
+                {
+                    errorMessage = "";
+                    return true;
+                }
+                else
+                {
+                    errorMessage = "Number is too small, enter at least 3";
+                    return false;
+                }
+            }
+            else
+            {
+                errorMessage = "Wrong input! Please enter number bigger than 3";
+                return false;
+            }
+        }
     }
 }

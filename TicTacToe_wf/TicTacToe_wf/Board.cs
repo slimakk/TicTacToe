@@ -42,9 +42,6 @@ namespace TicTacToe_wf
 
         public void generateBoard()
         {
-            
-            
-            
             //Setting up flowlayout panel
             board.Size = new Size(65 * size, 65 * size);
             board.FlowDirection = FlowDirection.LeftToRight;

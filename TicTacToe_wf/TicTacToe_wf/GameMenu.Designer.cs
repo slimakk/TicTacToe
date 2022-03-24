@@ -67,6 +67,7 @@
             // 
             // exitButton
             // 
+            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exitButton.Location = new System.Drawing.Point(205, 202);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(250, 50);
@@ -77,6 +78,7 @@
             // 
             // leadrButton
             // 
+            this.leadrButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.leadrButton.Location = new System.Drawing.Point(205, 146);
             this.leadrButton.Name = "leadrButton";
             this.leadrButton.Size = new System.Drawing.Size(250, 50);
@@ -87,6 +89,7 @@
             // 
             // playButton
             // 
+            this.playButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.playButton.Location = new System.Drawing.Point(205, 90);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(250, 50);
@@ -246,6 +249,7 @@
             this.boardLength.Name = "boardLength";
             this.boardLength.Size = new System.Drawing.Size(250, 23);
             this.boardLength.TabIndex = 3;
+            this.boardLength.Validating += new System.ComponentModel.CancelEventHandler(this.boardLength_Validating);
             // 
             // backToGMButton
             // 
@@ -274,10 +278,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 361);
+            this.Controls.Add(this.customGameScreen);
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.playerMenu);
             this.Controls.Add(this.gameModeScreen);
-            this.Controls.Add(this.customGameScreen);
             this.MaximizeBox = false;
             this.Name = "GameMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
