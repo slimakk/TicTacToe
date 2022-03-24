@@ -30,7 +30,7 @@ namespace TicTacToe_wf
         private void nextTurnButton_Click(object sender, EventArgs e) //shows Board size window
         {
             Hide();
-            Play play = new Play(player_o, player_x);
+            GameMenu play = new GameMenu(player_o,player_x,2);
             play.ShowDialog();
         }
 
@@ -42,7 +42,7 @@ namespace TicTacToe_wf
         private void nextTurnPlayersButton_Click(object sender, EventArgs e)//shows Players window
         {
             Hide();
-            Players players = new Players();
+            GameMenu players = new GameMenu("","",1);
             players.ShowDialog();
         }
 

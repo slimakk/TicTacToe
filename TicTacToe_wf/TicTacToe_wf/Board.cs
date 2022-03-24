@@ -18,6 +18,8 @@ namespace TicTacToe_wf
         private bool turn ;
         private String[,] board_;
         private FlowLayoutPanel board = new FlowLayoutPanel();
+        private Label turnLabel = new Label();
+        private Label playerTurn = new Label();
         private int numberOfTurns = 0;
         private string currentPlayer;
         private bool tie = false;
@@ -37,9 +39,12 @@ namespace TicTacToe_wf
             else
                 this.currentPlayer = player_o;
         }
+
         public void generateBoard()
         {
-
+            
+            
+            
             //Setting up flowlayout panel
             board.Size = new Size(65 * size, 65 * size);
             board.FlowDirection = FlowDirection.LeftToRight;
@@ -142,18 +147,20 @@ namespace TicTacToe_wf
             {
                 this.currentPlayer = player_x;
                 button.Text = "X";
+                playerTurn.Text = player_o;
             }
             else
             {
                 this.currentPlayer = player_o;
                 button.Text = "O";
+                playerTurn.Text = player_x;
             }
 
             button.Enabled = false;
             turn = !turn; //changes turns
             if (checkWinner())
             {
-                //File.WriteAllText("previous.txt", $"{player_o} {player_x}"); //writes names in previous.txt
+                //writes names in previous.txt
                 dat.WritePrevious(player_o, player_x);
                 if (tie)
                 {
@@ -174,6 +181,19 @@ namespace TicTacToe_wf
         private void Board_FormClosed(object sender, FormClosedEventArgs e) //shuts off program
         {
             Application.Exit();
+        }
+
+        private void Board_Load(object sender, EventArgs e)
+        {
+            turnLabel.Text = "Turn:";
+            turnLabel.Location = new Point(10, 10);
+            turnLabel.Font = new Font(fontType, 15);
+            playerTurn.Text = currentPlayer;
+            playerTurn.Location = new Point(10, 35);
+            playerTurn.Font = new Font(fontType, 12);
+            playerTurn.AutoSize = true;
+            this.Controls.Add(turnLabel);
+            this.Controls.Add(playerTurn);
         }
     }
 }
