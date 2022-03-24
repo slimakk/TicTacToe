@@ -131,6 +131,7 @@
             this.player_O.Name = "player_O";
             this.player_O.Size = new System.Drawing.Size(250, 23);
             this.player_O.TabIndex = 5;
+            this.player_O.Validating += new System.ComponentModel.CancelEventHandler(this.player_O_Validating);
             // 
             // player_x_Label
             // 
@@ -148,6 +149,7 @@
             this.player_x.Name = "player_x";
             this.player_x.Size = new System.Drawing.Size(250, 23);
             this.player_x.TabIndex = 3;
+            this.player_x.Validating += new System.ComponentModel.CancelEventHandler(this.player_x_Validating);
             // 
             // backToMenuButton
             // 
@@ -285,10 +287,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 361);
-            this.Controls.Add(this.customGameScreen);
-            this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.playerMenu);
+            this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.gameModeScreen);
+            this.Controls.Add(this.customGameScreen);
             this.MaximizeBox = false;
             this.Name = "GameMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

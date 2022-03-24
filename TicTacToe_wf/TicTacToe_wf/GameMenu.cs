@@ -14,10 +14,12 @@ namespace TicTacToe_wf
     {
         private List<Panel> screens = new List<Panel>();
         private Database dat = new Database();
+        private ValidInput check = new ValidInput();
         private string playerO = "";
         private string playerX = "";
         private int SizeOfBoard = 3;
         private int index = 0;
+        private string errorMessage = "";
         public GameMenu()//Default constructor
         {
             InitializeComponent();
@@ -60,9 +62,12 @@ namespace TicTacToe_wf
         //Setting up player names and switching to game mode selection
         private void modeSelectButton_Click(object sender, EventArgs e)
         {
-            playerO = player_O.Text;
-            playerX = player_x.Text;
-            screens[2].BringToFront();
+            if(ValidateChildren(ValidationConstraints.Enabled))
+            {
+                playerO = player_O.Text;
+                playerX = player_x.Text;
+                screens[2].BringToFront();
+            }
         }
         //Setting up player names from previous game and switching to game mode selection
         private void previousNamesButton_Click(object sender, EventArgs e)
@@ -76,6 +81,34 @@ namespace TicTacToe_wf
         private void backToMenuButton_Click(object sender, EventArgs e)
         {
             screens[0].BringToFront();
+        }
+        private void player_O_Validating(object sender, CancelEventArgs e)
+        {
+            if(!check.ValidName(player_O.Text,out errorMessage))
+            {
+                e.Cancel = true;
+                player_O.Focus();
+                errorProvider.SetError(player_O, errorMessage);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(player_O, null);
+            }
+        }
+        private void player_x_Validating(object sender, CancelEventArgs e)
+        {
+            if (!check.ValidName(player_x.Text, out errorMessage))
+            {
+                e.Cancel = true;
+                player_O.Focus();
+                errorProvider.SetError(player_x, errorMessage);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(player_x, null);
+            }
         }
         //Thrid screen - gamemode menu
 
@@ -119,8 +152,7 @@ namespace TicTacToe_wf
         //Validating textbox input - integers only
         private void boardLength_Validating(object sender, CancelEventArgs e)
         {
-            string errorMessage;
-            if (!ValidInput(boardLength.Text, out errorMessage))
+            if (!check.ValidInteger(boardLength.Text, out errorMessage))
             {
                 e.Cancel = true;
                 boardLength.Focus();
@@ -130,29 +162,6 @@ namespace TicTacToe_wf
             {
                 e.Cancel = false;
                 errorProvider.SetError(boardLength, null);
-            }
-        }
-        //Checks if string can be parsed into integer and if the value is within range
-        public bool ValidInput(string value, out string errorMessage)
-        {
-            int number;
-            if(int.TryParse(value,out number))
-            {
-                if(number >= 3)
-                {
-                    errorMessage = "";
-                    return true;
-                }
-                else
-                {
-                    errorMessage = "Number is too small, enter at least 3";
-                    return false;
-                }
-            }
-            else
-            {
-                errorMessage = "Wrong input! Please enter number bigger than 3";
-                return false;
             }
         }
     }
