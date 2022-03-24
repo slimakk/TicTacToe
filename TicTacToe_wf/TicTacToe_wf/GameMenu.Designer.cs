@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainMenu = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
             this.leadrButton = new System.Windows.Forms.Button();
@@ -49,10 +50,12 @@
             this.boardLength = new System.Windows.Forms.TextBox();
             this.backToGMButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.mainMenu.SuspendLayout();
             this.playerMenu.SuspendLayout();
             this.gameModeScreen.SuspendLayout();
             this.customGameScreen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -273,6 +276,10 @@
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // GameMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -293,6 +300,7 @@
             this.gameModeScreen.ResumeLayout(false);
             this.customGameScreen.ResumeLayout(false);
             this.customGameScreen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,5 +328,6 @@
         private TextBox boardLength;
         private Button backToGMButton;
         private Button okButton;
+        private ErrorProvider errorProvider;
     }
 }

@@ -102,27 +102,37 @@ namespace TicTacToe_wf
         //Starting custom game with user-defined layout
         private void okButton_Click(object sender, EventArgs e)
         {
-            SizeOfBoard = int.Parse(boardLength.Text);
-            Hide();
-            Board board = new Board(SizeOfBoard, playerO, playerX);
-            board.generateBoard();
-            board.ShowDialog();
+            if(ValidateChildren(ValidationConstraints.Enabled))
+            {
+                SizeOfBoard = int.Parse(boardLength.Text);
+                Hide();
+                Board board = new Board(SizeOfBoard, playerO, playerX);
+                board.generateBoard();
+                board.ShowDialog();
+            }
         }
         //Switching back to game mode selection
         private void backToGMButton_Click(object sender, EventArgs e)
         {
             screens[2].BringToFront();
         }
-
+        //Validating textbox input - integers only
         private void boardLength_Validating(object sender, CancelEventArgs e)
         {
             string errorMessage;
-            if(!ValidInput(boardLength.Text, out errorMessage))
+            if (!ValidInput(boardLength.Text, out errorMessage))
             {
                 e.Cancel = true;
-                boardLength.Select(0,boardLength.Text.Length);
+                boardLength.Focus();
+                errorProvider.SetError(boardLength, errorMessage);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(boardLength, null);
             }
         }
+        //Checks if string can be parsed into integer and if the value is within range
         public bool ValidInput(string value, out string errorMessage)
         {
             int number;
