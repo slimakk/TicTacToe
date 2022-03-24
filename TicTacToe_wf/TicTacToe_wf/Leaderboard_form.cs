@@ -13,7 +13,7 @@ namespace TicTacToe_wf
     public partial class Leaderboard_form : Form
     {
         private Database dat = new Database();
-        public Leaderboard_form()
+        public Leaderboard_form()//Constructor
         {
             InitializeComponent();
         }
@@ -25,23 +25,24 @@ namespace TicTacToe_wf
             leaderboard.Columns.Add("Name");
             leaderboard.Columns.Add("Wins");
             leaderboard.Columns[0].Width = this.leaderboard.Width / 2;
+            leaderboard.Columns[1].Width = this.leaderboard.Width / 2;
             //loading and sorting dictionary with LINQ
             var boardItems = from entry in dat.LoadFromLeaderboard() orderby entry.Value descending select entry;
             //filling up listview with top 10 players
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 4; i++)//NEEDS REWORK, INDEX OUT OF BOUNDS
             {
                 var player = boardItems.ElementAt(i);
                 leaderboard.Items.Add(new ListViewItem(new string[] {player.Key,player.Value.ToString()}));
             }
         }
 
-        private void backButton_Click(object sender, EventArgs e)//Self-explanatory
+        private void backButton_Click(object sender, EventArgs e)//Goes back to main menu
         {
             Hide();
-            TicTacToe menu = new TicTacToe();
+            GameMenu menu = new GameMenu();
             menu.ShowDialog();
         }
-        private void Leaderboard_form_FormClosed(object sender, FormClosedEventArgs e)
+        private void Leaderboard_form_FormClosed(object sender, FormClosedEventArgs e)//Closes the game window
         {
             Application.Exit();
         }

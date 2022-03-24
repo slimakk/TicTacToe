@@ -22,6 +22,7 @@ namespace TicTacToe_wf
         private string currentPlayer;
         private bool tie = false;
         private Database dat = new Database();
+        private string fontType = "Segoe UI";
         public Board(int Size,string player_o, string player_x) //constructor
         {
             InitializeComponent();
@@ -45,11 +46,13 @@ namespace TicTacToe_wf
             board.Left = (this.ClientSize.Width - board.Width) / 2;
             board.Top = (this.ClientSize.Height - board.Height) / 2;
             board.Anchor = AnchorStyles.None;
+            //Generating player board
             for (int i = 0; i < size * size; i++)
             {
                 Button btn = new Button();
                 btn.Size = new Size(61, 61);
                 btn.Margin = new Padding(2, 2, 2, 2);
+                btn.Font = new Font(fontType, 20.0f);
                 btn.Click += gameButtton_Click;
                 board.Controls.Add(btn);
             }

@@ -39,19 +39,23 @@ namespace TicTacToe_wf
                 leaderboard.Add(winner, 1);
             WriteToLeaderboard();//Writing the contents of dict into a leaderboard file
         }
+        //Writing to leaderboard file
         public void WriteToLeaderboard()
         {
+            //Creating stringbuilder from dict contents
             StringBuilder stringBuilder = new StringBuilder();
 
             foreach(KeyValuePair<string, int> kvp in leaderboard)
             {
                 stringBuilder.AppendLine($"{kvp.Key},{kvp.Value}");
             }
-            string result = stringBuilder.ToString();
-            File.WriteAllText(leaderboardFile, result);
+            string result = stringBuilder.ToString();//Creating string from stringbuilder
+            File.WriteAllText(leaderboardFile, result);//Writing the string to leaderboard file
         }
+        //Loading leaderboard file to dict, returning dict for future use
         public Dictionary<string,int> LoadFromLeaderboard()
         {
+            //Reading each line of leaderboard file and spliting it into keys and values
             foreach(var line in File.ReadLines(leaderboardFile))
             {
                 string[] val = line.Split(',');
