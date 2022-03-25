@@ -90,6 +90,7 @@ namespace TicTacToe_wf
         {
             screens[0].BringToFront();
         }
+        //Checking if entered names are valid names
         private void player_O_Validating(object sender, CancelEventArgs e)
         {
             if(!check.ValidName(player_O.Text,out errorMessage))
@@ -143,9 +144,9 @@ namespace TicTacToe_wf
         //Starting custom game with user-defined layout
         private void okButton_Click(object sender, EventArgs e)
         {
-            if(ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                SizeOfBoard = int.Parse(boardLength.Text);
+                SizeOfBoard = Decimal.ToInt32(boardLength.Value);
                 Hide();
                 Board board = new Board(SizeOfBoard, playerO, playerX);
                 board.generateBoard();
@@ -157,10 +158,10 @@ namespace TicTacToe_wf
         {
             screens[2].BringToFront();
         }
-        //Validating textbox input - integers only
+        //Checking if number input is integer and within range
         private void boardLength_Validating(object sender, CancelEventArgs e)
         {
-            if (!check.ValidInteger(boardLength.Text, out errorMessage))
+            if (!check.ValidInteger(boardLength.Value, out errorMessage))
             {
                 e.Cancel = true;
                 boardLength.Focus();
@@ -172,7 +173,5 @@ namespace TicTacToe_wf
                 errorProvider.SetError(boardLength, null);
             }
         }
-
-
     }
 }

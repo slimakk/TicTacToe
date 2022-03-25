@@ -8,12 +8,11 @@ namespace TicTacToe_wf
 {
     internal class ValidInput
     {
-        public bool ValidInteger(string value, out string errorMessage)
+        public bool ValidInteger(decimal value, out string errorMessage)
         {
-            int number;
-            if (int.TryParse(value, out number))
+            if ((value % 1)==0)
             {
-                if (number >= 3 && number <= 5)
+                if (value >= 3 && value <= 5)
                 {
                     errorMessage = "";
                     return true;

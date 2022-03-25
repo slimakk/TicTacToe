@@ -48,8 +48,8 @@
             this.customModeButton = new System.Windows.Forms.Button();
             this.normalModeButton = new System.Windows.Forms.Button();
             this.customGameScreen = new System.Windows.Forms.Panel();
+            this.boardLength = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.boardLength = new System.Windows.Forms.TextBox();
             this.backToGMButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -57,6 +57,7 @@
             this.playerMenu.SuspendLayout();
             this.gameModeScreen.SuspendLayout();
             this.customGameScreen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.boardLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -243,14 +244,22 @@
             // 
             // customGameScreen
             // 
-            this.customGameScreen.Controls.Add(this.label1);
             this.customGameScreen.Controls.Add(this.boardLength);
+            this.customGameScreen.Controls.Add(this.label1);
             this.customGameScreen.Controls.Add(this.backToGMButton);
             this.customGameScreen.Controls.Add(this.okButton);
             this.customGameScreen.Location = new System.Drawing.Point(12, 12);
             this.customGameScreen.Name = "customGameScreen";
             this.customGameScreen.Size = new System.Drawing.Size(660, 337);
             this.customGameScreen.TabIndex = 3;
+            // 
+            // boardLength
+            // 
+            this.boardLength.Location = new System.Drawing.Point(205, 117);
+            this.boardLength.Name = "boardLength";
+            this.boardLength.Size = new System.Drawing.Size(250, 23);
+            this.boardLength.TabIndex = 5;
+            this.boardLength.Validating += new System.ComponentModel.CancelEventHandler(this.boardLength_Validating);
             // 
             // label1
             // 
@@ -261,14 +270,6 @@
             this.label1.Size = new System.Drawing.Size(127, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Number of boxes:";
-            // 
-            // boardLength
-            // 
-            this.boardLength.Location = new System.Drawing.Point(205, 117);
-            this.boardLength.Name = "boardLength";
-            this.boardLength.Size = new System.Drawing.Size(250, 23);
-            this.boardLength.TabIndex = 3;
-            this.boardLength.Validating += new System.ComponentModel.CancelEventHandler(this.boardLength_Validating);
             // 
             // backToGMButton
             // 
@@ -317,6 +318,7 @@
             this.gameModeScreen.ResumeLayout(false);
             this.customGameScreen.ResumeLayout(false);
             this.customGameScreen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.boardLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -342,10 +344,10 @@
         private Button normalModeButton;
         private Panel customGameScreen;
         private Label label1;
-        private TextBox boardLength;
         private Button backToGMButton;
         private Button okButton;
         private ErrorProvider errorProvider;
         private Button aboutButton;
+        private NumericUpDown boardLength;
     }
 }
