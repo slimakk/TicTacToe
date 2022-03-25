@@ -17,7 +17,6 @@ namespace TicTacToe_wf
         {
             InitializeComponent();
         }
-
         private void Leaderboard_form_Load(object sender, EventArgs e)
         {
             //setting up listview
@@ -29,13 +28,23 @@ namespace TicTacToe_wf
             //loading and sorting dictionary with LINQ
             var boardItems = from entry in dat.LoadFromLeaderboard() orderby entry.Value descending select entry;
             //filling up listview with top 10 players
-            for(int i = 0; i < 4; i++)//NEEDS REWORK, INDEX OUT OF BOUNDS
+            if (boardItems.Count() <= 10)
             {
-                var player = boardItems.ElementAt(i);
-                leaderboard.Items.Add(new ListViewItem(new string[] {player.Key,player.Value.ToString()}));
+                for(int i = 0; i < boardItems.Count(); i++)
+                {
+                    var player = boardItems.ElementAt(i);
+                    leaderboard.Items.Add(new ListViewItem(new string[] { player.Key, player.Value.ToString() }));
+                }
+            }
+            else
+            {
+                for(int i = 0; i < 10; i++)
+                {
+                    var player = boardItems.ElementAt(i);
+                    leaderboard.Items.Add(new ListViewItem(new string[] { player.Key, player.Value.ToString() }));
+                }
             }
         }
-
         private void backButton_Click(object sender, EventArgs e)//Goes back to main menu
         {
             Hide();

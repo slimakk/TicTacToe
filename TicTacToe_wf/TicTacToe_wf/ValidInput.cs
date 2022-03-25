@@ -31,7 +31,7 @@ namespace TicTacToe_wf
         }
         public bool ValidName(string value, out string errorMessage)
         {
-            if(string.IsNullOrEmpty(value))
+            if(string.IsNullOrWhiteSpace(value))
             {
                 errorMessage = "Please enter valid name";
                 return false;

@@ -147,6 +147,7 @@
             this.player_O.Size = new System.Drawing.Size(250, 23);
             this.player_O.TabIndex = 5;
             this.player_O.Validating += new System.ComponentModel.CancelEventHandler(this.player_O_Validating);
+            this.player_O.Validated += new System.EventHandler(this.player_O_Validated);
             // 
             // player_x_Label
             // 
@@ -165,6 +166,7 @@
             this.player_x.Size = new System.Drawing.Size(250, 23);
             this.player_x.TabIndex = 3;
             this.player_x.Validating += new System.ComponentModel.CancelEventHandler(this.player_x_Validating);
+            this.player_x.Validated += new System.EventHandler(this.player_x_Validated);
             // 
             // backToMenuButton
             // 
@@ -256,9 +258,19 @@
             // boardLength
             // 
             this.boardLength.Location = new System.Drawing.Point(205, 117);
+            this.boardLength.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.boardLength.Name = "boardLength";
             this.boardLength.Size = new System.Drawing.Size(250, 23);
             this.boardLength.TabIndex = 5;
+            this.boardLength.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.boardLength.Validating += new System.ComponentModel.CancelEventHandler(this.boardLength_Validating);
             // 
             // label1
@@ -301,11 +313,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(684, 361);
-            this.Controls.Add(this.mainMenu);
-            this.Controls.Add(this.playerMenu);
-            this.Controls.Add(this.gameModeScreen);
             this.Controls.Add(this.customGameScreen);
+            this.Controls.Add(this.playerMenu);
+            this.Controls.Add(this.mainMenu);
+            this.Controls.Add(this.gameModeScreen);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "GameMenu";

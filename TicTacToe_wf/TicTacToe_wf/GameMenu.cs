@@ -70,7 +70,7 @@ namespace TicTacToe_wf
         //Setting up player names and switching to game mode selection
         private void modeSelectButton_Click(object sender, EventArgs e)
         {
-            if(ValidateChildren(ValidationConstraints.Enabled))
+            if(this.ValidateChildren())
             {
                 playerO = player_O.Text;
                 playerX = player_x.Text;
@@ -96,29 +96,26 @@ namespace TicTacToe_wf
             if(!check.ValidName(player_O.Text,out errorMessage))
             {
                 e.Cancel = true;
-                player_O.Focus();
                 errorProvider.SetError(player_O, errorMessage);
             }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(player_O, null);
-            }
+        }
+        private void player_O_Validated(object sender, EventArgs e)
+        {
+            errorProvider.SetError(player_O, "");
         }
         private void player_x_Validating(object sender, CancelEventArgs e)
         {
             if (!check.ValidName(player_x.Text, out errorMessage))
             {
                 e.Cancel = true;
-                player_O.Focus();
                 errorProvider.SetError(player_x, errorMessage);
             }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(player_x, null);
-            }
         }
+        private void player_x_Validated(object sender, EventArgs e)
+        {
+            errorProvider.SetError(player_x, "");
+        }
+
         //Thrid screen - gamemode menu
 
         //Starting normal game - 3x3 layout
