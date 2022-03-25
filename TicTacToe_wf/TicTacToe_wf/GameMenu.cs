@@ -52,6 +52,14 @@ namespace TicTacToe_wf
             var leader = new Leaderboard_form();
             leader.ShowDialog();
         }
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            string about = "TicTacToe Game\nBy slimakk & sedemto ©2022";
+            MessageBoxButtons okButton = MessageBoxButtons.OK;
+            DialogResult result;
+            result = MessageBox.Show(about,"About", okButton);
+
+        }
         //Closing the game
         private void exitButton_Click(object sender, EventArgs e)
         {
@@ -164,5 +172,7 @@ namespace TicTacToe_wf
                 errorProvider.SetError(boardLength, null);
             }
         }
+
+
     }
 }

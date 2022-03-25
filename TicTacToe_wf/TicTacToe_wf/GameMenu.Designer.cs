@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameMenu));
             this.mainMenu = new System.Windows.Forms.Panel();
+            this.aboutButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.leadrButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
@@ -60,6 +62,7 @@
             // 
             // mainMenu
             // 
+            this.mainMenu.Controls.Add(this.aboutButton);
             this.mainMenu.Controls.Add(this.exitButton);
             this.mainMenu.Controls.Add(this.leadrButton);
             this.mainMenu.Controls.Add(this.playButton);
@@ -68,10 +71,21 @@
             this.mainMenu.Size = new System.Drawing.Size(660, 337);
             this.mainMenu.TabIndex = 0;
             // 
+            // aboutButton
+            // 
+            this.aboutButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.aboutButton.Location = new System.Drawing.Point(205, 172);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(250, 50);
+            this.aboutButton.TabIndex = 3;
+            this.aboutButton.Text = "About";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
             // exitButton
             // 
             this.exitButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.exitButton.Location = new System.Drawing.Point(205, 202);
+            this.exitButton.Location = new System.Drawing.Point(205, 228);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(250, 50);
             this.exitButton.TabIndex = 2;
@@ -82,7 +96,7 @@
             // leadrButton
             // 
             this.leadrButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.leadrButton.Location = new System.Drawing.Point(205, 146);
+            this.leadrButton.Location = new System.Drawing.Point(205, 116);
             this.leadrButton.Name = "leadrButton";
             this.leadrButton.Size = new System.Drawing.Size(250, 50);
             this.leadrButton.TabIndex = 1;
@@ -93,7 +107,7 @@
             // playButton
             // 
             this.playButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.playButton.Location = new System.Drawing.Point(205, 90);
+            this.playButton.Location = new System.Drawing.Point(205, 60);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(250, 50);
             this.playButton.TabIndex = 0;
@@ -287,10 +301,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 361);
-            this.Controls.Add(this.playerMenu);
             this.Controls.Add(this.mainMenu);
+            this.Controls.Add(this.playerMenu);
             this.Controls.Add(this.gameModeScreen);
             this.Controls.Add(this.customGameScreen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "GameMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -331,5 +346,6 @@
         private Button backToGMButton;
         private Button okButton;
         private ErrorProvider errorProvider;
+        private Button aboutButton;
     }
 }
