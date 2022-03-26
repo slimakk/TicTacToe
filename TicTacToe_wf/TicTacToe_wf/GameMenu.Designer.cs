@@ -271,7 +271,6 @@
             0,
             0,
             0});
-            this.boardLength.Validating += new System.ComponentModel.CancelEventHandler(this.boardLength_Validating);
             // 
             // label1
             // 

@@ -141,14 +141,11 @@ namespace TicTacToe_wf
         //Starting custom game with user-defined layout
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
-            {
-                SizeOfBoard = Decimal.ToInt32(boardLength.Value);
-                Hide();
-                Board board = new Board(SizeOfBoard, playerO, playerX);
-                board.generateBoard();
-                board.ShowDialog();
-            }
+            SizeOfBoard = Decimal.ToInt32(boardLength.Value);
+            Hide();
+            Board board = new Board(SizeOfBoard, playerO, playerX);
+            board.generateBoard();
+            board.ShowDialog();
         }
         //Switching back to game mode selection
         private void backToGMButton_Click(object sender, EventArgs e)
@@ -156,19 +153,6 @@ namespace TicTacToe_wf
             screens[2].BringToFront();
         }
         //Checking if number input is integer and within range
-        private void boardLength_Validating(object sender, CancelEventArgs e)
-        {
-            if (!check.ValidInteger(boardLength.Value, out errorMessage))
-            {
-                e.Cancel = true;
-                boardLength.Focus();
-                errorProvider.SetError(boardLength, errorMessage);
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(boardLength, null);
-            }
-        }
+
     }
 }
