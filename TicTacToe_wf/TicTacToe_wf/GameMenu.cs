@@ -152,7 +152,5 @@ namespace TicTacToe_wf
         {
             screens[2].BringToFront();
         }
-        //Checking if number input is integer and within range
-
     }
 }

@@ -186,7 +186,7 @@ namespace TicTacToe_wf
             turnLabel.Location = new Point(10, 10);
             turnLabel.Font = new Font(fontType, 15);
             playerTurn.Text = currentPlayer;
-            playerTurn.Location = new Point(10, 35);
+            playerTurn.Location = new Point(10, 40);
             playerTurn.Font = new Font(fontType, 12);
             playerTurn.AutoSize = true;
             this.Controls.Add(turnLabel);
