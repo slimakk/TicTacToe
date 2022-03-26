@@ -48,9 +48,16 @@ namespace TicTacToe_wf
         //Opening leaderboard form
         private void leadrButton_Click(object sender, EventArgs e)
         {
-            Hide();
-            var leader = new Leaderboard_form();
-            leader.ShowDialog();
+            if(dat.CheckLeaderboard())
+            {
+                Hide();
+                var leader = new Leaderboard_form();
+                leader.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No previous games found", "Error", MessageBoxButtons.OK);
+            }
         }
         private void aboutButton_Click(object sender, EventArgs e)
         {
@@ -58,7 +65,6 @@ namespace TicTacToe_wf
             MessageBoxButtons okButton = MessageBoxButtons.OK;
             DialogResult result;
             result = MessageBox.Show(about,"About", okButton);
-
         }
         //Closing the game
         private void exitButton_Click(object sender, EventArgs e)
@@ -80,10 +86,18 @@ namespace TicTacToe_wf
         //Setting up player names from previous game and switching to game mode selection
         private void previousNamesButton_Click(object sender, EventArgs e)
         {
-            string[] players = dat.LoadPrevious();
-            playerO = players[0];
-            playerX = players[1];
-            screens[2].BringToFront();
+            string[] players;
+            try 
+            {
+                players = dat.LoadPrevious();
+                playerO = players[0];
+                playerX = players[1];
+                screens[2].BringToFront();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK);
+            }
         }
         //Switching back to main menu
         private void backToMenuButton_Click(object sender, EventArgs e)
@@ -151,6 +165,11 @@ namespace TicTacToe_wf
         private void backToGMButton_Click(object sender, EventArgs e)
         {
             screens[2].BringToFront();
+        }
+
+        private void GameMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

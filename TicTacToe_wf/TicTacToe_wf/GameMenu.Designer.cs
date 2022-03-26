@@ -314,15 +314,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(684, 361);
-            this.Controls.Add(this.customGameScreen);
-            this.Controls.Add(this.playerMenu);
             this.Controls.Add(this.mainMenu);
+            this.Controls.Add(this.playerMenu);
             this.Controls.Add(this.gameModeScreen);
+            this.Controls.Add(this.customGameScreen);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "GameMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TicTacToe - Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameMenu_FormClosed);
             this.Load += new System.EventHandler(this.GameMenu_Load);
             this.mainMenu.ResumeLayout(false);
             this.playerMenu.ResumeLayout(false);

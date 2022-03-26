@@ -30,7 +30,7 @@ namespace TicTacToe_wf
             //filling up listview with top 10 players
             if (boardItems.Count() <= 10)
             {
-                for(int i = 0; i < boardItems.Count(); i++)
+                for (int i = 0; i < boardItems.Count(); i++)
                 {
                     var player = boardItems.ElementAt(i);
                     leaderboard.Items.Add(new ListViewItem(new string[] { player.Key, player.Value.ToString() }));
@@ -38,7 +38,7 @@ namespace TicTacToe_wf
             }
             else
             {
-                for(int i = 0; i < 10; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     var player = boardItems.ElementAt(i);
                     leaderboard.Items.Add(new ListViewItem(new string[] { player.Key, player.Value.ToString() }));

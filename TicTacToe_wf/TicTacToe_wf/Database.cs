@@ -11,6 +11,7 @@ namespace TicTacToe_wf
         private string previousFile = "previous.txt";
         private string leaderboardFile = "leaderboard.txt";
         private Dictionary<string, int> leaderboard = new Dictionary<string, int>();
+        private string[] names;
         //Writing names of current players for future use
         public void WritePrevious(string player_o, string player_x)
         {
@@ -19,7 +20,14 @@ namespace TicTacToe_wf
         //Loading names from previous game via text file
         public string[] LoadPrevious()
         { 
-            string[] names = File.ReadAllText(previousFile).Split(",");
+            if(!(File.Exists(previousFile)) || (File.ReadAllBytes(previousFile) == null))
+            {
+                throw new FileNotFoundException("No previous games found");
+            }
+            else 
+            {
+                names = File.ReadAllText(previousFile).Split(",");
+            }
             return names;
         }
         //Filling and updating leaderboard dictionary
@@ -56,13 +64,21 @@ namespace TicTacToe_wf
         public Dictionary<string,int> LoadFromLeaderboard()
         {
             //Reading each line of leaderboard file and spliting it into keys and values
-            foreach(var line in File.ReadLines(leaderboardFile))
+            foreach (var line in File.ReadLines(leaderboardFile))
             {
                 string[] val = line.Split(',');
                 leaderboard.Add(val[0], int.Parse(val[1]));
             }
             return leaderboard;
         }
-        
+        public bool CheckLeaderboard()
+        {
+            if (!(File.Exists(leaderboardFile)) || (File.ReadAllBytes(leaderboardFile) == null))
+            {
+                return false;
+            }
+            else
+                return true;
+        }
     }
 }
